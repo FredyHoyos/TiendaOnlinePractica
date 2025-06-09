@@ -1,9 +1,19 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import { getUsers } from '@/utils/api'
 
-const index = () => {
+const Index = () => {
+  const [usuarios, setUsuarios] = useState([]);
+  useEffect(()=> {
+    const fetchUsers = async () => {
+      const data = await getUsers();
+      setUsuarios(data);
+    };
+    fetchUsers();
+  }, []);
+  console.log('ususarios :>> ', usuarios);
   return (
-    <div>index</div>
+    <div>Index</div>
   )
 }
 
-export default index
+export default Index
