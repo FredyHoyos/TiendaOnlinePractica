@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { getUsers } from '@/utils/api'
+import UserDataTable from '@/components/Organisims/DataTable';
+
 
 const Index = () => {
   const [usuarios, setUsuarios] = useState([]);
@@ -12,7 +14,9 @@ const Index = () => {
   }, []);
   console.log('ususarios :>> ', usuarios);
   return (
-    <div>Index</div>
+    <div>
+      <UserDataTable users={usuarios}/>
+    </div>
   )
 }
 

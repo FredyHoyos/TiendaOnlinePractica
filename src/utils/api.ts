@@ -44,7 +44,7 @@ export const getUsers = async () => {
         if(!res.ok){
             throw new Error (`Error fetching users: ${res.statusText}`);
         }
-        return res.json;
+        return res.json();
     } catch (error){
         console.error('Error in getUsers:', error);
         throw error;
