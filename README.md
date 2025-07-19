@@ -1,40 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🍕 Order-Management
 
-## Getting Started
+Aplicación web de administración de inventarios y transacciones en el contexto de un restaurante de comidas rápidas (pizza, hamburguesas, etc.). Permite gestionar movimientos, visualizar gráficos y administrar usuarios con diferentes roles.
 
-First, run the development server:
+🔗 [Repositorio en GitHub](https://github.com/mateovr19/Order-Management.git)  
+🌐 [Frontend desplegado en Vercel]([https://tu-url.vercel.app](https://foodsmanager-order-managements.vercel.app/))
 
-```bash
+<img width="1768" height="819" alt="image" src="https://github.com/user-attachments/assets/7750bcc8-97a5-4ba4-afdb-7da593c2d3c3" />
+
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- **Next.js** + **React** – para el frontend y SSR
+- **Tailwind CSS** – para el diseño responsivo y moderno
+- **Prisma ORM** – para el manejo de la base de datos
+- **Supabase** – base de datos PostgreSQL en la nube
+- **TypeScript** – tipado estático
+- **Vercel** – despliegue del frontend
+
+---
+
+## 🚀 Funcionalidades principales
+
+- ✅ Autenticación de usuarios con control de acceso
+- 🏠 Página de landing con opción para iniciar sesión
+- 📊 Gestión de transacciones con:
+  - Visualización de movimientos por Maestro
+  - Creación de entradas/salidas
+  - Gráfica de saldo diario
+- 📦 Gestión de Maestros (productos/materiales)
+- 👥 Gestión de usuarios con roles (ADMIN y USER)
+- 🧭 Sidebar con navegación fija entre secciones
+
+---
+
+## 🧑‍💼 Roles
+
+| Rol   | Permisos                                                                 |
+|--------|--------------------------------------------------------------------------|
+| `ADMIN` | Acceso total: transacciones, maestros, usuarios                         |
+| `USER`  | Acceso a transacciones y maestros. Sin permisos sobre usuarios o crear maestros |
+
+---
+
+## 📂 Estructura del proyecto
+
+El backend y frontend están en la misma carpeta, como un monolito bajo Next.js:
+
+---
+
+## ⚙️ Instalación y configuración
+
+1. **Clona el repositorio**  
+
+git clone https://github.com/mateovr19/Order-Management.git
+cd Order-Management
+
+Instala dependencias
+npm install
+Crea una base de datos en Supabase
+
+Copia la URL y clave de acceso de tu proyecto Supabase.
+
+Crea el archivo .env
+Incluye al menos:
+
+env
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=secret
+
+POSTGRES_URL="postgres://09bb38e5055a628149947d55923b436677989bc75f811e796bf49085accfb3b4:sk_Zq-QZbIDLSpqRVEm7cK2U@db.prisma.io:5432/?sslmode=require"
+PRISMA_DATABASE_URL="prisma+postgres://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMDFKWkdNUVNBUjBFOVAzNUNBS1k5TjkxSFYiLCJ0ZW5hbnRfaWQiOiIwOWJiMzhlNTA1NWE2MjgxNDk5NDdkNTU5MjNiNDM2Njc3OTg5YmM3NWY4MTFlNzk2YmY0OTA4NWFjY2ZiM2I0IiwiaW50ZXJuYWxfc2VjcmV0IjoiZTM1ZmVjZDktOGRmNC00ODYyLWE1OWYtODcxZDg3ZDdlYWJjIn0.cRthm21LMjh145zTTMVo0B_Bb7gFHPlTH4611Lz9ME0"
+DATABASE_URL="postgres://09bb38e5055a628149947d55923b436677989bc75f811e796bf49085accfb3b4:sk_Zq-QZbIDLSpqRVEm7cK2U@db.prisma.io:5432/?sslmode=require"
+
+Genera e instala el esquema de base de datos con Prisma
+
+npx prisma migrate dev --name migracion-inicial
+Ejecuta la aplicación localmente
+
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+📊 Funcionalidades por página
+🔄 Transacciones
+Selección de Maestro para ver sus movimientos
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tabla con ID, fecha, cantidad y responsable
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Formulario para crear movimiento (entrada o salida)
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Gráfica con saldo diario acumulado
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+👨‍🏭 Maestros
+Tabla con ID, nombre, saldo, creador
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Creación de Maestro (solo ADMIN)
 
-## Learn More
+👤 Usuarios
+Tabla con ID, email, rol, fecha de creación
 
-To learn more about Next.js, take a look at the following resources:
+Edición de rol (solo ADMIN)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+✍️ Autores
+Fredy Hoyos
+Douglas Alarcón
+Mateo Velázquez
 
-## Deploy on Vercel
+📸 Capturas de pantalla
+<img width="1844" height="946" alt="image" src="https://github.com/user-attachments/assets/1c6763c8-1850-450d-b0de-33cae0af4d27" />
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
